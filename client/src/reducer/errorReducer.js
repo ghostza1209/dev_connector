@@ -1,7 +1,5 @@
-import {
-  GET_ERRORS
-} from '../actions/types'
-const initialState = {}
+import { GET_ERRORS } from "../actions/types";
+const initialState = {};
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -10,4 +8,4 @@ export default (state = initialState, action) => {
     default:
       return state;
   }
-}
+};
