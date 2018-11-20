@@ -45,7 +45,11 @@ class AddExperience extends Component {
       current: !this.state.current
     });
   };
-
+  componentWillUnmount() {
+    //Clear errors before unmount
+    let errors = this.props.errors;
+    Object.keys(this.props.errors).map(val => delete errors[val]);
+  }
   render() {
     const { errors } = this.props;
     return (

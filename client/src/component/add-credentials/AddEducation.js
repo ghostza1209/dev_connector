@@ -45,7 +45,11 @@ class AddEducation extends Component {
       current: !this.state.current
     });
   };
-
+  componentWillUnmount() {
+    //Clear errors before unmount
+    let errors = this.props.errors;
+    Object.keys(this.props.errors).map(val => delete errors[val]);
+  }
   render() {
     const { errors } = this.props;
     return (
@@ -77,7 +81,7 @@ class AddEducation extends Component {
                   error={errors.degree}
                 />
                 <TextFieldGroup
-                  placeholder="Field "
+                  placeholder="* Field of Study "
                   name="fieldofstudy"
                   value={this.state.fieldofstudy}
                   onChange={this.onChange}
@@ -116,8 +120,8 @@ class AddEducation extends Component {
                   </label>
                 </div>
                 <TextAreaFieldGroup
-                  name="Program description"
-                  placeholder="description"
+                  placeholder="Program description"
+                  name="description"
                   value={this.state.description}
                   error={errors.description}
                   onChange={this.onChange}

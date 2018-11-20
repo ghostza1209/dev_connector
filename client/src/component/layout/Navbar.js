@@ -23,11 +23,12 @@ class Navbar extends Component {
           </Link>
         </li>
         <li className="nav-item">
-          <a
-            href="javascript:void(0)"
-            onClick={this.onLogoutClick}
-            className="nav-link"
-          >
+          <Link className="nav-link" to="/feed">
+            Post Feed
+          </Link>
+        </li>
+        <li className="nav-item">
+          <a href="#" onClick={this.onLogoutClick} className="nav-link">
             <img
               className="rounded-circle"
               style={{ width: "30px", marginRight: "5px" }}

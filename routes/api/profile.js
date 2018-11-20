@@ -105,7 +105,7 @@ router.post('/', passport.authenticate('jwt', {
     if (req.body.location) profileFields.location = req.body.location
     if (req.body.bio) profileFields.bio = req.body.bio
     if (req.body.status) profileFields.status = req.body.status
-    if (req.body.githubUsername) profileFields.githubUsername = req.body.githubUsername
+    if (req.body.githubusername) profileFields.githubusername = req.body.githubusername
         //skills - Spilt into array
     if (typeof req.body.skills !== 'undefined') {
         profileFields.skills = req.body.skills.split(',')
@@ -190,7 +190,7 @@ router.post('/education', passport.authenticate('jwt', { session: false }), (req
             const newEdu = {
                     school: req.body.school,
                     degree: req.body.degree,
-                    fieldOfStudy: req.body.fieldOfStudy,
+                    fieldofstudy: req.body.fieldofstudy,
                     from: req.body.from,
                     to: req.body.to,
                     current: req.body.current,
@@ -222,7 +222,7 @@ router.delete('/experience/:exp_id', passport.authenticate('jwt', { session: fal
 //@access private
 router.delete('/education/:edu_id', passport.authenticate('jwt', { session: false }), (req, res) => {
     profile.findOne({ user: req.user.id }).then(profile=>{
-      const removeIndex = profile.education.indexOf(req.params.edu_id)
+      const removeIndex = profile.education.map(item=>item.id).indexOf(req.params.edu_id)
       profile.education.splice(removeIndex,1);
       profile.save().then(profile=>res.json(profile))
     }).catch(err=>res.status(404).json(err))   
