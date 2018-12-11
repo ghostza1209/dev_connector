@@ -1,7 +1,7 @@
 # dev_connector
 Dev connector is live now
 
-You will need to create a keys_dev.js in the server config folde with
+คุณต้องสร้างไฟล์ keys_dev.js ด้วย
 
 <code>
   module.exports = { <br/>
